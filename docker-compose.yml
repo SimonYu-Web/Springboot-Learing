@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  postgresql:
+    image: postgres:13.0-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - xxx
+
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - 8080:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - xxx
+
+
+networks:
+  xxx:
